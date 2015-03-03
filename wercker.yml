@@ -1,27 +1,27 @@
 box: wercker-labs/docker
 build:
   steps:
-#todo: create a stept to verify if the wercker build machine is valid to use for docker
+  #todo: create a stept to verify if the wercker build machine is valid to use for docker
     - script:
         name: print full docker info
         code: |
-#todo: create a step to print docker info
+          #todo: create a step to print docker info
           sudo docker version
           sudo docker info
           sudo docker images
     - script:
-#todo: create a step to build a docker image
+        #todo: create a step to build a docker image
         name: build the docker image
         code: |
-        # Build the actual container with the Dockerfile (included in the repo)          
-        sudo docker build -rm -t nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} .
-        docker tag nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} nextpj/sip-core-docker:latest
+          # Build the actual container with the Dockerfile (included in the repo)          
+          sudo docker build -rm -t nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} .
+          docker tag nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} nextpj/sip-core-docker:latest
     - script:
         name: list docker images to check if image was built
         code: |
           # List docker images, it should list the sip-core docker image
           sudo docker images
-#todo: create a step to validate image
+          #todo: create a step to validate image
     - zvelo/docker-save:
           image: nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7}
     - zvelo/docker-save:
