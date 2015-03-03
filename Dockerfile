@@ -3,7 +3,7 @@ from centos:6
 maintainer nextpj <nextpjsoftware@gmail.com>
 
 run yum update -y
-run yum install -y libtool rpm
+run yum install -y rpm libtool tar file
 
 #some rpms are only found in epel, we do not want to get from epel, so we'll have to get from our epel
 #poco-devel gperftools-devel
@@ -32,6 +32,7 @@ run yum install -y unixODBC-devel
 #sipxportlib-devel >= %version
 #sipxtacklib-devel >= %version
 run yum install -y glibc-headers
+run yum install -y xerces-c-devel
 #mongodb-devel >= 2.0.2
 
 #sipxproxy build requires
@@ -52,7 +53,7 @@ run yum install -y swig java-1.7.0-openjdk-devel
 #when manually installed centos says no package available for the ones below
 run yum install -y zeromq-devel hiredis-devel libev-devel swig
 #BuildRequires: sipxcommserverlib-devel  >= %version
-#BuildRequires: sipxportlib-devel        >= %version
+9\#BuildRequires: sipxportlib-devel        >= %version
 
 #sipxrls build requires
 #BuildRequires: sipxcalllib-devel >= %version
