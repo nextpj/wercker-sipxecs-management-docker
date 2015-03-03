@@ -12,12 +12,10 @@ run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noa
 
 # sipXportLib build requires taken from .spec.in
 run yum install -y gcc-c++ cppunit-devel openssl-devel gperftools-devel
-#todo how to make sure we're installing >=4.5
-run yum install -y pcre-devel
-run yum install -y findutils
-#todo how to make sure we're installing >= 1.39
-run yum install -y  boost-devel
-run yum install -y poco-devel
+#todo how to make sure we're installing pcre-devel >=4.5
+run yum install -y pcre-devel findutils
+#todo how to make sure we're installing boost-devel >= 1.39
+run yum install -y  boost-devel poco-devel
 
 #sipxtacklib build requires taken from .spec.in
 # sipxportlib-devel >= %version
@@ -27,13 +25,11 @@ run yum install -y poco-devel
 run yum install -y unixODBC-devel
 #sipxportlib-devel >= %version
 #sipxtacklib-devel >= %version
-run yum install -y glibc-headers
-run yum install -y xerces-c-devel
+run yum install -y glibc-headers xerces-c-devel
 #mongodb-devel >= 2.0.2
 
 #sipxproxy build requires
-run yum install -y zip
-run yum install -y shadow-utils
+run yum install -y zip shadow-utils
 #sipxcommserverlib-devel  >= %version
 #sipxportlib-devel        >= %version
 #sipxtacklib-devel        >= %version

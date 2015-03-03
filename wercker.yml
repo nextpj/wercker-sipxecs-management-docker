@@ -30,7 +30,7 @@ build:
 deploy:
   steps:
     - zvelo/docker-hub-push:
-          image: nextpj/sio-core-docker:${WERCKER_GIT_COMMIT:0:7}
+          image: nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7}
           email: ${docker_hub_email}
           password: ${docker_hub_password}
           username: nextpj
