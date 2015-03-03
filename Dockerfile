@@ -7,7 +7,7 @@ run yum install -y rpm libtool tar file
 
 #some rpms are only found in epel, we do not want to get from epel, so we'll have to get from our epel
 #poco-devel gperftools-devel
-rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 
 # sipXportLib build requires taken from .spec.in
