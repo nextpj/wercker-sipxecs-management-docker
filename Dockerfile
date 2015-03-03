@@ -11,9 +11,7 @@ run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noa
 
 
 # sipXportLib build requires taken from .spec.in
-run yum install -y gcc-c++ cppunit-devel
-run yum install -y openssl-devel
-run yum install -y gperftools-devel
+run yum install -y gcc-c++ cppunit-devel openssl-devel gperftools-devel
 #todo how to make sure we're installing >=4.5
 run yum install -y pcre-devel
 run yum install -y findutils
