@@ -1,18 +1,41 @@
 box: wercker-labs/docker
 build:
   steps:
+#todo: create a stept to verify if the wercker build machine is valid to use for docker
     - script:
-        name: docker version
+        name: print full docker info
         code: |
-          # Simply print docker version
+#todo: create a step to print docker info
           sudo docker version
+          sudo docker info
+          sudo docker images
     - script:
-        name: docker build
+#todo: create a step to build a docker image
+        name: build the docker image
         code: |
-          # Build the actual container with the Dockerfile (included in the repo)
-          sudo docker build -t nextpj/sip-core-docker .
+        # Build the actual container with the Dockerfile (included in the repo)          
+        sudo docker build -rm -t nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} .
+        docker tag nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} nextpj/sip-core-docker:latest
     - script:
-        name: list images
+        name: list docker images to check if image was built
         code: |
           # List docker images, it should list the sip-core docker image
           sudo docker images
+#todo: create a step to validate image
+    - zvelo/docker-save:
+          image: nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7}
+    - zvelo/docker-save:
+          image: nextpj/sip-core-docker:latest
+
+deploy:
+  steps:
+    - zvelo/docker-hub-push:
+          image: nextpj/sio-core-docker:${WERCKER_GIT_COMMIT:0:7}
+          email: ${docker_hub_email}
+          password: ${docker_hub_password}
+          username: nextpj
+    - zvelo/docker-hub-push:
+          image: nextpj/sip-core-docker:latest
+          email: ${docker_hub_email}
+          password: ${docker_hub_password}
+          username: nextpj
