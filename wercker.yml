@@ -1,7 +1,7 @@
 box: wercker-labs/docker
 build:
   steps:
-  #todo: create a stept to verify if the wercker build machine is valid to use for docker
+  #todo: create a step to verify if the wercker build machine is valid to use for docker
     - script:
         name: print full docker info
         code: |
