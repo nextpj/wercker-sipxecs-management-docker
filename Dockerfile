@@ -3,7 +3,7 @@ from centos:6
 maintainer nextpj <nextpjsoftware@gmail.com>
 
 run yum update -y
-run yum install -y rpm libtool tar file
+run yum install -y rpm libtool tar file automake
 
 #some rpms are only found in epel, we do not want to get from epel, so we'll have to get from our epel
 #poco-devel gperftools-devel
@@ -11,9 +11,7 @@ run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noa
 
 
 # sipXportLib build requires taken from .spec.in
-run yum install -y automake
-run yum install -y gcc-c++
-run yum install -y cppunit-devel
+run yum install -y gcc-c++ cppunit-devel
 run yum install -y openssl-devel
 run yum install -y gperftools-devel
 #todo how to make sure we're installing >=4.5
