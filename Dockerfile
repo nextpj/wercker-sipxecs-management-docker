@@ -5,8 +5,16 @@ maintainer nextpj <nextpjsoftware@gmail.com>
 #update the image
 run yum update -y
 
+#temporary install the original epel-release repo to get thttpd
+run yum install -y wget 
+run wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+run rpm -Uvh epel-release-6*.rpm
+run yum install -y thttpd
+run yum erase epel-release
+
 # install tools needed by rpm build
-run yum install -y rpm libtool tar file automake git createrepo thttpd rpm-build
+run yum install -y rpm libtool tar file automake git createrepo rpm-build
+run gem install --no-rdoc fpm
 
 #run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 #some rpms are only found in epel, we do not want to get from centos epel, we'll get them from sipxecs epel
