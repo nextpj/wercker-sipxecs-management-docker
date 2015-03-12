@@ -13,7 +13,7 @@ run yum install -y thttpd
 run yum erase -y epel-release
 
 # install tools needed by rpm build
-run yum install -y rpm libtool tar file automake git createrepo rpm-build
+run yum install -y rpm libtool tar file automake git createrepo rpm-build rubygems ruby-devel
 run gem install --no-rdoc fpm
 
 #run rpm -ivh  http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
