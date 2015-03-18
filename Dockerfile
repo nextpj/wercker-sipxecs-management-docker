@@ -102,3 +102,10 @@ run yum install -y httpd-devel apr-devel
 #BuildRequires: sipxportlib-devel >= %version
 #BuildRequires: sipxtacklib-devel >= %version
 
+# sipxtools
+run yum install -y perl-DateTime-Format-DateParse python-pymongo python-pymongo-gridfs
+
+# sipxviewer 
+ryn yum install -y java-devel
+
+
