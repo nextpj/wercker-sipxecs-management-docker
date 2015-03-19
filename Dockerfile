@@ -26,86 +26,77 @@ run echo "gpgcheck=0" >> /etc/yum.repos.d/sipxecs-epel.repo
 
 # NOTES:
 # 1. sipxecs modules below are listed in build order
-#portlib tacklib supervisor commserverlib sqa link commons nodeps relay proxy publisher rls saa
- 
-# sipXportLib 
-# build requires
-# pcre-devel >=4.5
-# boost-devel >= 1.39
-run yum install -y gcc-c++ cppunit-devel openssl-devel gperftools-devel pcre-devel findutils boost-devel poco-devel
-# run requires
-
-# sipxtacklib 
-# build requires
-# sipxportlib-devel >= %version
-
-#sipxsupervisor
-# this is required by sipxcommserverlib rpm 
-# build requires
-# net-snmp-devel >= 5.3.1
-run yum install -y net-snmp-devel
-# install requires
-# cfengine >= 3.2.3
-run yum install -y cfengine fail2ban ntp rubygem-net-sftp sec sendmail sendmail-cf system-config-network-tui
-
-# sipxcommserverlib
-# build requires
-# mongodb-devel >= 2.0.2
-run yum install -y unixODBC-devel glibc-headers xerces-c-devel mongodb-devel
-# sipxportlib-devel >= %version
-# sipxtacklib-devel >= %version
-
-# sipxsqa
-# build requires
-run yum install -y swig java-1.7.0-openjdk-devel zeromq-devel hiredis-devel libev-devel swig
-# sipxcommserverlib-devel  >= %version
-# sipxportlib-devel        >= %version
-# install requires
-run yum install -y redis
+# sipxcommons sipxconfig sipxaudiocodes sipxcallcontroller sipxcdr sipxcounterpath sipxpolycom sipxprovision sipxyealink sipxrest                  
 
 # sipxcommons
-# this is required by sipxrelay
-
-# sipxrelay
-# this is required by sipxproxy
-
-# sipxproxy 
 # build requires
-run yum install -y zip shadow-utils
-# sipxcommserverlib-devel  >= %version
-# sipxportlib-devel        >= %version
-# sipxtacklib-devel        >= %version
+run yum install -y java-1.7.0-openjdk-devel shadow-utils zip rsync
 # install requires
-run yum install -y vixie-cron 
+run yum install -y java-1.7.0-openjdk which
 
-#sipxregistry 
+# sipxcdr            
 # build requires
-# sipxcommserverlib-devel  >= %version
-# sipxportlib-devel        >= %version
-# sipxtacklib-devel        >= %version
+run yum install -y rubygems ruby unixODBC-devel
+# install requires
+run yum install -y chkconfig postgresql-odbc stunnel ruby-dbi ruby-libs ruby-postgres
 
-#sipxpublisher  build requires
-#BuildRequires: sipxcommserverlib-devel >= %version
-#BuildRequires: sipxportlib-devel >= %version
-#BuildRequires: sipxtacklib-devel >= %version
+# install dart sdk
+run wget http://download2.sipfoundry.org/pub/sipxecs-sip-core/dartsdk-linux-x64-release.zip
+run unzip dartsdk-linux-x64-release.zip -d /opt/  
+run echo "export DART_SDK='/opt/dart/dart-sdk'" >> ~/.bash_profile
+run echo "export PATH='$PATH:$DART_SDK/bin'" >> ~/.bash_profile
 
+# sipxconfig
+# build requires
+# net-snmp-libs >= 5.7.1
+# net-snmp-devel >= 5.7.1
+# net-snmp-agent-libs >= 5.7.1
+# httpd >= 2.0
+# sipxcommons >= %version
+# sipxcdr-client >= %version
+run yum install -y cronie libxslt ruby-devel dart-sdk rubygems httpd net-snmp-libs net-snmp-devel net-snmp-agent-libs pcre-devel
 
-#sipxrls build requires
-#BuildRequires: sipxcommserverlib-devel >= %version
-#BuildRequires: sipxportlib-devel >= %version
-#BuildRequires: sipxtacklib-devel >= %version
-#BuildRequires: sipxsqa-devel >= %version
+# install requires
+# mongodb-server >= 2.2.0
+# mongodb >= 2.2
+# net-snmp >= 5.7.1
+# net-snmp-sysvinit >= 5.7.1
+# net-snmp-utils >= 5.7.1
+# net-snmp-python
+# sipxcommons >= %version
+# sipxcdr-client >= %version
+# ?? Requires: sipxsupervisor >= %version
+run yum install -y postgresql-server mod_ssl python-pymongo python-argparse js net-snmp net-snmp-sysvinit net-snmp-utils net-snmp-python fontconfig dejavu-serif-fonts chkconfig ruby rubygems bind dhcp tftp-server vsftpd
+run yum install -y mongodb-server mongodb
 
-#sipxsaa build requires
-run yum install -y httpd-devel apr-devel
-#BuildRequires: sipxcommserverlib-devel >= %version
-#BuildRequires: sipxportlib-devel >= %version
-#BuildRequires: sipxtacklib-devel >= %version
+# sipxaudiocodes
+# build requires
+# install requires
 
-# sipxtools
-run yum install -y perl-DateTime-Format-DateParse python-pymongo python-pymongo-gridfs
+# sipxrest        
+# build requires
+# install requires
 
-# sipxviewer 
-ryn yum install -y java-devel
+# sipxcallcontroller
+# build requires
+# install requires
+
+# sipxcounterpath      
+# build requires
+# install requires
+
+# sipxpolycom             
+# build requires
+# install requires
+
+# sipxprovision            
+# build requires
+# install requires
+
+# sipxyealink
+# build requires
+run yum install -y java-devel
+# install requires
+
 
 
