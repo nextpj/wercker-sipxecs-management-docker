@@ -14,8 +14,8 @@ build:
         name: build the docker image
         code: |
           # Build the actual container with the Dockerfile (included in the repo)          
-          sudo docker build -rm -t nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} .
-          docker tag nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7} nextpj/sip-core-docker:latest
+          sudo docker build -rm -t nextpj/sipxecs-management-docker:${WERCKER_GIT_COMMIT:0:7} .
+          docker tag nextpj/sipxecs-management-docker:${WERCKER_GIT_COMMIT:0:7} nextpj/sipxecs-management-docker:latest
     - script:
         name: list docker images to check if image was built
         code: |
@@ -23,19 +23,19 @@ build:
           sudo docker images
           #todo: create a step to validate image
     - zvelo/docker-save:
-          image: nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7}
+          image: nextpj/sipxecs-management-docker:${WERCKER_GIT_COMMIT:0:7}
     - zvelo/docker-save:
-          image: nextpj/sip-core-docker:latest
+          image: nextpj/sipxecs-management-docker:latest
 
 deploy:
   steps:
     - zvelo/docker-hub-push:
-          image: nextpj/sip-core-docker:${WERCKER_GIT_COMMIT:0:7}
+          image: nextpj/sipxecs-management-docker:${WERCKER_GIT_COMMIT:0:7}
           email: ${docker_hub_email}
           password: ${docker_hub_password}
           username: nextpj
     - zvelo/docker-hub-push:
-          image: nextpj/sip-core-docker:latest
+          image: nextpj/sipxecs-management-docker:latest
           email: ${docker_hub_email}
           password: ${docker_hub_password}
           username: nextpj
