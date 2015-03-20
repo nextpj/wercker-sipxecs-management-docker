@@ -41,8 +41,9 @@ run yum install -y rubygems ruby unixODBC-devel
 run yum install -y chkconfig postgresql-odbc stunnel ruby-dbi ruby-libs ruby-postgres
 
 # install dart sdk
-run wget http://download2.sipfoundry.org/pub/sipxecs-sip-core/dartsdk-linux-x64-release.zip
-run unzip dartsdk-linux-x64-release.zip -d /opt/  
+run wget http://download2.sipfoundry.org/pub/build-utils/dart-sdk_centos_64.tar.gz
+run tar -xzvf dart-sdk_centos_64.tar.gz -C /opt/
+run rm dart-sdk_centos_64.tar.gz  
 run echo "export DART_SDK='/opt/dart/dart-sdk'" >> ~/.bash_profile
 run echo "export PATH='$PATH:$DART_SDK/bin'" >> ~/.bash_profile
 
