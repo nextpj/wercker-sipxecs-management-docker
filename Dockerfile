@@ -44,7 +44,7 @@ run yum install -y chkconfig postgresql-odbc stunnel ruby-dbi ruby-libs ruby-pos
 run wget http://download2.sipfoundry.org/pub/build-utils/dart-sdk_centos_64.tar.gz
 run tar -xzvf dart-sdk_centos_64.tar.gz -C /opt/
 run rm dart-sdk_centos_64.tar.gz  
-run echo "export DART_SDK='/opt/dart/dart-sdk'" >> ~/.bash_profile
+run echo "export DART_SDK='/opt/dart-sdk'" >> ~/.bash_profile
 run echo "export PATH='$PATH:$DART_SDK/bin'" >> ~/.bash_profile
 
 # sipxconfig
