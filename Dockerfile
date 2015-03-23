@@ -55,7 +55,7 @@ run echo "export PATH='$PATH:$DART_SDK/bin'" >> ~/.bash_profile
 # httpd >= 2.0
 # sipxcommons >= %version
 # sipxcdr-client >= %version
-run yum install -y cronie libxslt ruby-devel dart-sdk rubygems httpd net-snmp-libs net-snmp-devel net-snmp-agent-libs pcre-devel
+run yum install -y cronie libxslt ruby-devel rubygems httpd net-snmp-libs net-snmp-devel net-snmp-agent-libs pcre-devel
 
 # install requires
 # mongodb-server >= 2.2.0
